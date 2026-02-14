@@ -1,0 +1,170 @@
+:root {
+  --bg: #0c0f13;
+  --card: #121822;
+  --text: #eef2f7;
+  --muted: #a7b2c3;
+  --accent: #f2b880;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background: radial-gradient(circle at top right, #1a2331, var(--bg) 45%);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+.brand {
+  font-family: "Playfair Display", Georgia, serif;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.hero {
+  min-height: 90vh;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  padding: 0;
+  margin: 0;
+}
+
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.nav a:hover,
+.nav a:focus-visible {
+  color: var(--accent);
+}
+
+.hero-content {
+  max-width: 720px;
+}
+
+.eyebrow {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-size: 0.8rem;
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  color: var(--muted);
+  max-width: 58ch;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background: var(--accent);
+  color: #1f160f;
+  padding: 0.72rem 1.2rem;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.section {
+  padding: 2rem clamp(1rem, 4vw, 4rem) 4rem;
+}
+
+.section-header {
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+figure {
+  margin: 0;
+  background: var(--card);
+  border: 1px solid #1d2737;
+  border-radius: 0.9rem;
+  overflow: hidden;
+}
+
+img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+}
+
+figcaption {
+  padding: 0.8rem 0.9rem;
+  color: var(--muted);
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.about p {
+  color: var(--muted);
+}
+
+.footer {
+  border-top: 1px solid #1c2533;
+  text-align: center;
+  padding: 2rem 1rem 3rem;
+  color: var(--muted);
+}
+
+.footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+  }
+}
