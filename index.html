@@ -3,81 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aria Lens | Photography Portfolio</title>
+  <title>Aria Lens — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="hero" id="home">
-    <nav class="nav">
-      <a class="brand" href="#home">Aria Lens</a>
-      <ul class="nav-links">
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-
-    <div class="hero-content">
-      <p class="eyebrow">Personal Photography Portfolio</p>
-      <h1>Moments framed with light, emotion, and story.</h1>
-      <p>
-        Hi, I'm Aria. I capture street life, travel scenes, and quiet portraits that feel both timeless and intimate.
-      </p>
-      <a class="cta" href="#gallery">View My Work</a>
+  <div id="intro" class="intro" aria-hidden="true">
+    <div class="intro-card">
+      <p>Welcome to</p>
+      <h1>Aria Lens</h1>
+      <span class="intro-glow"></span>
     </div>
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="#">Aria Lens</a>
+    <nav>
+      <a href="#gallery">Gallery</a>
+      <a href="#owner">Owner</a>
+      <a href="https://www.instagram.com/accounts/settings/?entrypoint=profile" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </nav>
   </header>
 
   <main>
-    <section class="section" id="gallery">
-      <div class="section-header">
-        <p class="eyebrow">Selected Work</p>
-        <h2>Gallery</h2>
-      </div>
-      <div class="grid">
-        <figure>
-          <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1000&q=80" alt="Woman with wind-blown hair at golden hour" />
-          <figcaption>Golden Hour Portrait</figcaption>
-        </figure>
-        <figure>
-          <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1000&q=80" alt="Sunlight streaming through forest trees" />
-          <figcaption>Forest Breath</figcaption>
-        </figure>
-        <figure>
-          <img src="https://images.unsplash.com/photo-1497219055242-93359eeed651?auto=format&fit=crop&w=1000&q=80" alt="Busy urban street at dusk" />
-          <figcaption>City Pulse</figcaption>
-        </figure>
-        <figure>
-          <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1000&q=80" alt="Snow-capped mountains and lake" />
-          <figcaption>Still Alpine</figcaption>
-        </figure>
-        <figure>
-          <img src="https://images.unsplash.com/photo-1499084732479-de2c02d45fc4?auto=format&fit=crop&w=1000&q=80" alt="Person walking with umbrella in rain" />
-          <figcaption>Rain Walk</figcaption>
-        </figure>
-        <figure>
-          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80" alt="Close-up portrait with dramatic lighting" />
-          <figcaption>Soft Shadows</figcaption>
-        </figure>
-      </div>
+    <section class="hero">
+      <p class="eyebrow">Personal Photography Portfolio</p>
+      <h2>Simple. Clean. Story-driven visuals.</h2>
+      <p class="subcopy">A minimal portfolio with dynamic layout and private owner upload controls.</p>
     </section>
 
-    <section class="section about" id="about">
-      <div>
-        <p class="eyebrow">About Me</p>
-        <h2>Photography is my way of listening to the world.</h2>
+    <section id="gallery" class="gallery-shell">
+      <div class="gallery-head">
+        <h3>Gallery</h3>
+        <p>Public visitors can view all images. Only owner mode can add new photos.</p>
       </div>
-      <p>
-        For the past seven years, I’ve been documenting everyday stories—from crowded city corners to remote landscapes. I believe a great photograph should feel honest and alive.
-      </p>
+      <div id="galleryGrid" class="gallery-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="owner" class="owner-shell">
+      <h3>Owner Access</h3>
+      <p class="muted">Unlock private mode using password. Password validation uses PBKDF2 + SHA-256 in browser.</p>
+
+      <div id="lockedPane" class="owner-card">
+        <label for="password">Owner password</label>
+        <div class="inline">
+          <input id="password" type="password" placeholder="Enter owner password" autocomplete="current-password" />
+          <button id="unlockBtn" type="button">Unlock</button>
+        </div>
+        <p id="authMessage" class="status"></p>
+      </div>
+
+      <div id="uploadPane" class="owner-card hidden" aria-hidden="true">
+        <h4>Add New Photo</h4>
+        <div class="field-grid">
+          <label>Photo title <input id="photoTitle" type="text" placeholder="e.g. Morning Light" /></label>
+          <label>Layout size
+            <select id="photoSize">
+              <option value="small">Small</option>
+              <option value="medium" selected>Medium</option>
+              <option value="large">Large</option>
+              <option value="tall">Tall</option>
+              <option value="wide">Wide</option>
+            </select>
+          </label>
+        </div>
+        <label for="photoFile">Image file</label>
+        <input id="photoFile" type="file" accept="image/*" />
+        <button id="addPhotoBtn" type="button">Add Photo</button>
+        <p id="uploadMessage" class="status"></p>
+      </div>
     </section>
   </main>
 
-  <footer class="footer" id="contact">
-    <p>Let’s create together.</p>
-    <a href="mailto:hello@arialens.com">hello@arialens.com</a>
-  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
