@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aria Lens — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="intro" class="intro" aria-hidden="true">
+    <div class="intro-card">
+      <p>Welcome to</p>
+      <h1>Aria Lens</h1>
+      <span class="intro-glow"></span>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="#">Aria Lens</a>
+    <nav>
+      <a href="#gallery">Gallery</a>
+      <a href="#owner">Owner</a>
+      <a href="https://www.instagram.com/accounts/settings/?entrypoint=profile" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Personal Photography Portfolio</p>
+      <h2>Simple. Clean. Story-driven visuals.</h2>
+      <p class="subcopy">A minimal portfolio with dynamic layout and private owner upload controls.</p>
+    </section>
+
+    <section id="gallery" class="gallery-shell">
+      <div class="gallery-head">
+        <h3>Gallery</h3>
+        <p>Public visitors can view all images. Only owner mode can add new photos.</p>
+      </div>
+      <div id="galleryGrid" class="gallery-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="owner" class="owner-shell">
+      <h3>Owner Access</h3>
+      <p class="muted">Unlock private mode using password. Password validation uses PBKDF2 + SHA-256 in browser.</p>
+
+      <div id="lockedPane" class="owner-card">
+        <label for="password">Owner password</label>
+        <div class="inline">
+          <input id="password" type="password" placeholder="Enter owner password" autocomplete="current-password" />
+          <button id="unlockBtn" type="button">Unlock</button>
+        </div>
+        <p id="authMessage" class="status"></p>
+      </div>
+
+      <div id="uploadPane" class="owner-card hidden" aria-hidden="true">
+        <h4>Add New Photo</h4>
+        <div class="field-grid">
+          <label>Photo title <input id="photoTitle" type="text" placeholder="e.g. Morning Light" /></label>
+          <label>Layout size
+            <select id="photoSize">
+              <option value="small">Small</option>
+              <option value="medium" selected>Medium</option>
+              <option value="large">Large</option>
+              <option value="tall">Tall</option>
+              <option value="wide">Wide</option>
+            </select>
+          </label>
+        </div>
+        <label for="photoFile">Image file</label>
+        <input id="photoFile" type="file" accept="image/*" />
+        <button id="addPhotoBtn" type="button">Add Photo</button>
+        <p id="uploadMessage" class="status"></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
